@@ -1,4 +1,5 @@
 #include <iostream>
+#include <unordered_map>
 #include <vector>
 
 using namespace std;
@@ -6,53 +7,24 @@ using namespace std;
 class Solution {
     public:
         vector<int> twoSum(vector<int> &nums, int target) {
-            vector<int> anwser;
-            vector<int> original(nums);
-            insertion_sort(nums);
+            unordered_map<int, int> numMap;
+            vector<int> result;
 
             for (int i = 0; i < nums.size(); i++) {
-                if (nums[i] > target) break;
-                for (int j = i + 1; j < nums.size(); j++) {
-                    if (nums[i] + nums[j] > target) break;
-                    if (nums[i] + nums[j] == target) {
-                        anwser.push_back(nums[i]);
-                        anwser.push_back(nums[j]);
-                    }
+                int complement = target - nums[i];
+                if (numMap.find(complement) != numMap.end()) {
+                    result.push_back(numMap[complement]);
+                    result.push_back(i);
+                    break;
                 }
+                numMap[nums[i]] = i;
             }
 
-            for (int i = 0; i < original.size(); i++) {
-                if (original[i] == anwser[0]) {
-                    anwser[0] = i;
-                    continue;
-                }
-                if (original[i] == anwser[1]) anwser[1] = i;
-            }
-
-            return anwser;
-        }
-
-        void insertion_sort(vector<int> &nums) {
-            for (int i = 1; i < nums.size(); i++) {
-                int current = nums[i];
-                int previous = i - 1;
-                while (previous >= 0 && current < nums[previous]) {
-                    nums[previous + 1] = nums[previous];
-                    previous--;
-                }
-                nums[previous + 1] = current;
-            }
+            return result;
         }
 };
 
-int main() {
-    vector<int> vec;
-    vec.push_back(3);
-    vec.push_back(2);
-    vec.push_back(4);
-    Solution test;
-    test.twoSum(vec, 6);
-}
+int main() {}
 
 /*
 Given an array of integers nums and an integer target, return indices of the two
