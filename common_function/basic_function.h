@@ -12,8 +12,8 @@ void random_element_generate(std::vector<int> &array, int max_elem,
     }
 }
 
-void show_array_element(std::vector<int> array) {
-    for (int i = 0; i < array.size(); i++) {
-        std::cout << array[i] << std::endl;
+void show_vector_element(std::vector<int> array) {
+    for (auto i = array.begin(); i != array.end(); ++i) {
+        std::cout << *i << std::endl;
     }
 }

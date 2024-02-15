@@ -1,12 +1,22 @@
+#include <algorithm>
 #include <iostream>
+#include <set>
 #include <vector>
 
-#include "basic_function.h"
-#include "common_sort/basic_sort.h"
+#include "common_function/basic_function.h"
+using namespace std;
 
 int main() {
-    std::vector<int> array;
-    random_element_generate(array, 10);
+    vector<int> vec;
+    vec.push_back(10);
+    vec.push_back(20);
+    vec.push_back(10);
+    vec.push_back(5);
+    show_vector_element(vec);
 
-    show_array_element(array);
+    set<int> s;
+    copy(vec.begin(), vec.end(), inserter(s, s.begin()));
+    for (auto i = s.begin(); i != s.end(); i++) {
+        cout << *i << endl;
+    }
 }
