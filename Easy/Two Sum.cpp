@@ -7,24 +7,19 @@ using namespace std;
 class Solution {
     public:
         vector<int> twoSum(const vector<int> &nums, int target) {
-            vector<int> answer;
-            unordered_map<int, int> map;
-            int less;
-            for (auto i = 0; i < nums.size(); i++) {
-                less = target - nums[i];
-                if (map.find(less) == map.end()) {
-                    map[nums[i]] = i;
-                    continue;
-                }
-                answer.push_back(i);
-                answer.push_back(map[less]);
-                break;
+            int left = 0, right = nums.size() - 1;
+            while (left < right) {
+                int sum = nums[left] + nums[right];
+                if (sum == target)
+                    return {left + 1, right + 1};
+                else if (sum < target)
+                    left++;
+                else if (sum > target)
+                    right--;
             }
-            return answer;
+            return {};
         }
 };
-
-int main() {}
 
 /*
 Given an array of integers nums and an integer target, return indices of the two
