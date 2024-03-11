@@ -32,7 +32,6 @@ class Solution {
         }
 };
 
-int main() {}
 
 /*
 You are given two integer arrays nums1 and nums2, sorted in non-decreasing
