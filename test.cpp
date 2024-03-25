@@ -1,9 +1,9 @@
-#include <algorithm>
 #include <iostream>
-#include <set>
-#include <vector>
 
-#include "common_function/basic_function.h"
 using namespace std;
 
-int main() {}
+int test_func(int a, int b) { return a + b; }
+
+int test_func_2(int a) { return a; }
+
+int main() { cout << test_func_2(test_func(10, 20)); }
