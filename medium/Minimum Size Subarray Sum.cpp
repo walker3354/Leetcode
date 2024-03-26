@@ -23,7 +23,8 @@ class Solution {
         }
 };
 
-// note it must continue
+// note it subarry must continue ex： target = 7
+// nums = {3,1,1,1,4}  ans = 4 => 1,1,1,4
 
 /*
 Given an array of positive integers nums and a positive integer target, return
