@@ -6,13 +6,13 @@ class Solution {
         bool isIsomorphic(string s, string t) {
             int s_len = s.size();
             int t_len = t.size();
-            if (s_len != t_len) false;
+            if (s_len != t_len) return false;
 
-            for (int i = 0; i < s_len; i++) {
-                char t_temp = t[i];
+            for (int i = 0; i < s_len - 1; i++) {
                 char s_temp = s[i];
-                if (s.find(i, s_temp) == t.find(i, t_temp)) {
-                }
+                char t_temp = t[i];
+                if (s.find(s_temp, i + 1) == t.find(t_temp, i + 1)) continue;
+                return false;
             }
             return true;
         }
